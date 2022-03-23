@@ -1,5 +1,6 @@
 load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@io_grpc_grpc_java//:java_grpc_library.bzl", "java_grpc_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 
 proto_library(
     name = "helloworld_proto",
@@ -60,4 +61,13 @@ java_binary(
     runtime_deps = [
         ":examples",
     ],
+)
+
+# go
+go_proto_library(
+    name = "hello_go_library",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+    importpath = "github.com/seven4x/bazel-grpc-demo-original/src/main/go/proto",
+    proto = ":helloworld_proto",
+    visibility = ["//visibility:public"],
 )
