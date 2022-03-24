@@ -1,6 +1,8 @@
 # version 
-bazel  6.0.0-pre.20220310.1
+bazel  4.2.1 以上
+
 go 版本 1.18
+
 java  11
 
 
